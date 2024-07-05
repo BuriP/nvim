@@ -24,5 +24,8 @@
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "todo-comments.nvim": { "branch": "main", "commit": "92e180db74102057263bd5a1dc30056b03424a08" },
   "tokyonight.nvim": { "branch": "main", "commit": "3657946439efe55c9ff51ad92c100f266e29a601" },
+  "trouble.nvim": { "branch": "main", "commit": "e32c194558ebeb433ccfd580a34c66770bc102bd" },
+  "undotree": { "branch": "master", "commit": "56c684a805fe948936cda0d1b19505b84ad7e065" },
+  "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
   "which-key.nvim": { "branch": "main", "commit": "c13a5fb71b5b05d21c15b317d90269d7c7774892" }
 }
