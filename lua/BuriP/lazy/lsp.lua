@@ -174,8 +174,8 @@ return {
 				--
 
 				lua_ls = {
-					cmd = {},
-					filetypes = {},
+					cmd = { "lua-language-server" },
+					filetypes = { "lua" },
 					capabilities = {},
 					settings = {
 						Lua = {
