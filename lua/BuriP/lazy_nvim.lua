@@ -19,8 +19,8 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 
--- Did this to have plugins in separate directory 
+-- Did this to have plugins in separate directory
 require("lazy").setup({
 	spec = "BuriP.lazy",
-	change_detection = {notify = true}
+	change_detection = { notify = true },
 })
