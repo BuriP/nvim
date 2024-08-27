@@ -1,20 +1,20 @@
 return {
-    --RosePine here below
-    {
-        "rose-pine/neovim",
-	lazy = false,
-	priority = 1000,
-	opts = {},
-        name = "rose-pine",
-        config = function()
-            require('rose-pine').setup({
-                disable_background = true,
-                styles = {
-                    italic = false,
-                },
-            })
-        end
-    },
+	--RosePine here below
+	{
+		"rose-pine/neovim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+		name = "rose-pine",
+		config = function()
+			require("rose-pine").setup({
+				disable_background = true,
+				styles = {
+					italic = false,
+				},
+			})
+		end,
+	},
 
 	{ -- You can easily change to a different colorscheme.
 		-- Change the name of the colorscheme plugin below, and then
@@ -37,5 +37,4 @@ return {
 			vim.cmd.highlight("NonText cterm=none")
 		end,
 	},
-
 }

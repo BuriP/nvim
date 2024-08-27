@@ -3,7 +3,18 @@ return {
 		"folke/trouble.nvim",
 		config = function()
 			require("trouble").setup({
-				icons = false,
+				modes = {
+					test = {
+
+						mode = "diagnostics",
+						preview = {
+							type = "split",
+							relative = "win",
+							position = "right",
+							size = 0.4,
+						},
+					},
+				},
 			})
 
 			vim.keymap.set("n", "<leader>tt", function()
