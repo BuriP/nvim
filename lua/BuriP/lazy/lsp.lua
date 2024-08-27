@@ -109,7 +109,7 @@ return {
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
 					if client and client.server_capabilities.documentHighlightProvider then
 						local highlight_augroup =
-							vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+						vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
 						vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 							buffer = event.buf,
 							group = highlight_augroup,
@@ -120,6 +120,14 @@ return {
 							buffer = event.buf,
 							group = highlight_augroup,
 							callback = vim.lsp.buf.clear_references,
+						})
+
+						vim.api.nvim_create_autocmd("LspDetach", {
+							group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+							callback = function(event)
+								vim.lsp.buf.clear_references()
+								vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event.buf })
+							end,
 						})
 					end
 
@@ -132,14 +140,6 @@ return {
 							vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 						end, "[T]oggle Inlay [H]ints")
 					end
-				end,
-			})
-
-			vim.api.nvim_create_autocmd("LspDetach", {
-				group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
-				callback = function(event)
-					vim.lsp.buf.clear_references()
-					vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event.buf })
 				end,
 			})
 
@@ -174,9 +174,9 @@ return {
 				--
 
 				lua_ls = {
-					cmd = { "lua-language-server" },
-					filetypes = { "lua" },
-					capabilities = {},
+					-- cmd = {},
+					-- filetypes = { "lua" },
+					-- capabilities = {},
 					settings = {
 						Lua = {
 							completion = {
@@ -202,7 +202,6 @@ return {
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
-				"lua_ls",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -298,14 +297,6 @@ return {
 			local luasnip = require("luasnip")
 			luasnip.config.setup({})
 
-			--setup for vim-dadbod
-			cmp.setup.filetype({ "sql" }, {
-				sources = {
-					{ name = "vim-dadbod-completion" },
-					{ name = "buffer" },
-				},
-			})
-
 			--setting cmdline '/'
 			cmp.setup.cmdline("/", {
 				mapping = cmp.mapping.preset.cmdline(),
@@ -388,6 +379,14 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },
+				},
+			})
+
+			--setup for vim-dadbod
+			cmp.setup.filetype({ "sql" }, {
+				sources = {
+					{ name = "vim-dadbod-completion" },
+					{ name = "buffer" },
 				},
 			})
 		end,
