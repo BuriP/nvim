@@ -109,7 +109,7 @@ return {
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
 					if client and client.server_capabilities.documentHighlightProvider then
 						local highlight_augroup =
-						vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+							vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
 						vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 							buffer = event.buf,
 							group = highlight_augroup,
@@ -124,9 +124,9 @@ return {
 
 						vim.api.nvim_create_autocmd("LspDetach", {
 							group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
-							callback = function(event)
+							callback = function(event2)
 								vim.lsp.buf.clear_references()
-								vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event.buf })
+								vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
 							end,
 						})
 					end
@@ -282,38 +282,19 @@ return {
 					},
 				},
 			},
-			"saadparwaiz1/cmp_luasnip",
-
-			-- Adds other completion capabilities.
-			--  nvim-cmp does not ship with all sources by default. They are split
-			--  into multiple repos for maintenance purposes.
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
+			{
+				"saadparwaiz1/cmp_luasnip",
+				"hrsh7th/cmp-nvim-lsp",
+				"hrsh7th/cmp-path",
+				"hrsh7th/cmp-cmdline",
+			},
 		},
+
 		config = function()
 			-- See `:help cmp`
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
 			luasnip.config.setup({})
-
-			--setting cmdline '/'
-			cmp.setup.cmdline("/", {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = {
-					{ name = "buffer" },
-				},
-			})
-
-			--setting cmdline ':'
-			cmp.setup.cmdline(":", {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = cmp.config.sources({
-					{ name = "path" },
-				}, {
-					{ name = "cmdline" },
-				}),
-			})
 
 			cmp.setup({
 				snippet = {
@@ -381,14 +362,31 @@ return {
 					{ name = "path" },
 				},
 			})
-
-			--setup for vim-dadbod
-			cmp.setup.filetype({ "sql" }, {
+			--setting cmdline '/'
+			cmp.setup.cmdline("/", {
+				mapping = cmp.mapping.preset.cmdline(),
 				sources = {
-					{ name = "vim-dadbod-completion" },
 					{ name = "buffer" },
 				},
 			})
+
+			--setting cmdline ':'
+			cmp.setup.cmdline(":", {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = cmp.config.sources({
+					{ name = "path" },
+				}, {
+					{ name = "cmdline" },
+				}),
+			})
+
+			--setup for vim-dadbod
+			--cmp.setup.filetype({ "sql" }, {
+			--sources = {
+			--{ name = "vim-dadbod-completion" },
+			--{ name = "buffer" },
+			--},
+			--})
 		end,
 	},
 }
