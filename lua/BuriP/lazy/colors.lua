@@ -27,7 +27,7 @@ return {
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("rose-pine-moon")
+			vim.cmd.colorscheme("catppuccin-macchiato")
 
 			-- You can configure highlights by doing something like:
 			vim.cmd.highlight("Comment gui=none")
@@ -37,4 +37,5 @@ return {
 			vim.cmd.highlight("NonText cterm=none")
 		end,
 	},
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 }
