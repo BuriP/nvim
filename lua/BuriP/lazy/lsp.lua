@@ -167,6 +167,8 @@ return {
 						autoSearchPaths = true,
 						diagnosticMode = "workspace",
 						useLibraryCodeForTypes = true,
+						autoImportCompletion = true,
+						typeCheckingMode = "strict",
 					},
 				},
 				rust_analyzer = {},
@@ -208,6 +210,9 @@ return {
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
+				"pyright",
+				"black",
+				"rust_analyzer",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -387,12 +392,12 @@ return {
 			})
 
 			--setup for vim-dadbod
-			--cmp.setup.filetype({ "sql" }, {
-			--sources = {
-			--{ name = "vim-dadbod-completion" },
-			--{ name = "buffer" },
-			--},
-			--})
+			cmp.setup.filetype({ "sql" }, {
+				sources = {
+					{ name = "vim-dadbod-completion" },
+					{ name = "buffer" },
+				},
+			})
 		end,
 	},
 }
