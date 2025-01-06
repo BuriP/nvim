@@ -27,7 +27,7 @@ return {
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("everforest")
+			vim.cmd.colorscheme("gruvbox-material")
 
 			-- You can configure highlights by doing something like:
 			vim.cmd.highlight("Comment gui=none")
@@ -39,4 +39,7 @@ return {
 	},
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{ "neanias/everforest-nvim", name = "everforest", version = false, lazy = false, priority = 1000 },
+	{ "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
+	{ "rebelot/kanagawa.nvim", name = "kanagawa", priority = 1000 },
+	{ "sainnhe/gruvbox-material", name = "gruvbox-material", priority = 1000 },
 }
