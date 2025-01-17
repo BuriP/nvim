@@ -1,4 +1,5 @@
 return {
+	--extra comment
 	"ibhagwan/fzf-lua",
 	event = "VimEnter",
 	dependencies = {
