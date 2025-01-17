@@ -8,6 +8,7 @@ return {
 			"mfussenegger/nvim-dap-python",
 			"rcarriga/nvim-dap-ui",
 			"theHamsta/nvim-dap-virtual-text",
+			"nvim-neotest/neotest",
 			"nvim-neotest/nvim-nio",
 			"williamboman/mason.nvim",
 			"jayp0521/mason-nvim-dap.nvim",
@@ -18,7 +19,6 @@ return {
 			local dap_python = require("dap-python")
 
 			-- Configure dap-python
-			dap_python.setup("/Users/burip/.virtualenvs/debugpy/bin/python3") -- You can specify the Python interpreter here if needed
 
 			--Configurinig python adapter
 			dap.adapters.python = {
@@ -38,15 +38,6 @@ return {
 					env = {
 						DJANGO_SETTINGS_MODULE = "paylogic.backoffice.settings",
 					},
-					pythonPath = function()
-						-- Automatically use the virtual environment, if available, or fallback to system Python
-						local venv_path = os.getenv("VIRTUAL_ENV")
-						if venv_path then
-							return venv_path .. "/bin/python3"
-						else
-							return "/usr/bin/python3" -- Adjust if your system's Python path is different
-						end
-					end,
 				},
 			}
 

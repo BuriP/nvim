@@ -5,7 +5,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font }, -- icons support
 	},
-	config = function()
+	opts = function()
 		require("fzf-lua").setup({
 			winopts = {
 				height = 0.80,
@@ -24,7 +24,7 @@ return {
 				["--info"] = "inline",
 				["--layout"] = "reverse", -- matches telescope’s default “descending” style
 			},
-			fzf_colors = {},
+			fzf_colors = true,
 		})
 
 		local fzf = require("fzf-lua")
@@ -32,10 +32,6 @@ return {
 		vim.keymap.set("n", "<leader>sh", function()
 			fzf.help_tags()
 		end, { desc = "[S]earch [H]elp (fzf-lua)" })
-
-		vim.keymap.set("n", "<leader>sk", function()
-			fzf.keymaps()
-		end, { desc = "[S]earch [K]eymaps (fzf-lua)" })
 
 		vim.keymap.set("n", "<leader>sf", function()
 			fzf.files()
@@ -63,14 +59,14 @@ return {
 
 		vim.keymap.set("n", "<leader>stg", function()
 			fzf.tags()
-		end, { desc = "[S]earch S[U]ggestions" })
+		end, { desc = "[S]earch [T]a[g]s" })
 
 		vim.keymap.set("n", "<leader>sw", function()
 			fzf.grep_cword()
 		end, { desc = "[S]earch current [W]ord (fzf-lua)" })
 
 		vim.keymap.set("n", "<leader>sg", function()
-			fzf.live_grep()
+			fzf.live_grep_glob()
 		end, { desc = "[S]earch by [G]rep (fzf-lua)" })
 
 		vim.keymap.set("n", "<leader>sdw", function()
@@ -96,6 +92,10 @@ return {
 		vim.keymap.set("n", "<leader>scs", function()
 			fzf.colorschemes()
 		end, { desc = "[S]earch [C]olor [S]cheme" })
+
+		vim.keymap.set("n", "<leader>sch", function()
+			fzf.changes()
+		end, { desc = "[S]earch [C][h]anges" })
 
 		vim.keymap.set("n", "<leader>sn", function()
 			fzf.files({
