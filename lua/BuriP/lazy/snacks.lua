@@ -8,7 +8,7 @@ return {
 			animate = { enabled = true },
 			bigfile = { enabled = false },
 			dashboard = { enabled = true },
-			indent = { enabled = false },
+			indent = { enabled = true },
 			input = { enabled = true },
 			lazygit = { enable = true },
 			notifier = { enabled = true },

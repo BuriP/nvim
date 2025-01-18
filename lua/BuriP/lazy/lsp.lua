@@ -116,14 +116,8 @@ return {
 			local servers = {
 				clangd = {},
 				gopls = {},
-				pyright = {
-					analysis = {
-						autoSearchPaths = true,
-						diagnosticMode = "workspace",
-						useLibraryCodeForTypes = true,
-						autoImportCompletion = true,
-						typeCheckingMode = "strict",
-					},
+				basedpyright = {
+					analysis = { typeCheckingMode = "recommended" },
 				},
 				rust_analyzer = {},
 				lua_ls = {
@@ -148,7 +142,6 @@ return {
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
-				"pyright",
 				"black",
 				"rust_analyzer",
 			})
