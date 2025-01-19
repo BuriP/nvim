@@ -10,32 +10,33 @@ return {
 			dashboard = { enabled = true },
 			indent = { enabled = true },
 			input = { enabled = true },
-			lazygit = { enable = true },
+			lazygit = { enabled = true },
 			notifier = { enabled = true },
 			quickfile = { enabled = true },
 			scroll = {
-				{
-					enabled = true,
-					animate = {
-						easing = "linear",
-					},
+				enabled = true,
+				animate = {
+					easing = "linear",
 				},
 			},
 			scope = {
-				{
+				enabled = true,
+				tresitter = {
 					enabled = true,
-					tresitter = {
-						enabled = true,
-						blocks = { enabled = true },
-					},
+					blocks = { enabled = true },
 				},
+				-- Optionally, define a filter if required:
+				-- filter = function(scope) return scope end,
 			},
 			scratch = { enabled = true },
 			statuscolumn = { enabled = true },
 			terminal = { enabled = true },
-			words = { { enabled = true, notify_jump = true, modes = { "n" } } },
+			words = {
+				enabled = true,
+				modes = { "n" },
+			},
 		},
-		keys = { -- Terminal Toggle
+		keys = { -- Terminal Toggle and others
 			{
 				"<leader>te",
 				function()

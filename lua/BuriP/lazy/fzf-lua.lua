@@ -12,7 +12,7 @@ return {
 				height = 0.80,
 				width = 0.60,
 				border = "rounded",
-				backdrop = 80, -- 0 to 100
+				backdrop = 0, -- 0 to 100
 				preview = {
 					layout = "flex",
 					vertical = "up:45%", -- preview window below results
@@ -71,7 +71,7 @@ return {
 		end, { desc = "[S]earch by [G]rep (fzf-lua)" })
 
 		vim.keymap.set("n", "<leader>sdw", function()
-			fzf.diagnostics_workspace()
+			fzf.lsp_workspace_diagnostics()
 		end, { desc = "[S]earch [D]iagnostics [W]orkspace (fzf-lua)" })
 
 		vim.keymap.set("n", "<leader>sdd", function()
