@@ -113,7 +113,7 @@ return {
 						basedpyright = {
 							analysis = {
 								typeCheckingMode = "standard", -- or "off" if you want no type checking
-								diagnosticMode = "workspace",
+								autoSearchPaths = true,
 								useLibraryCodeForTypes = true,
 							},
 						},

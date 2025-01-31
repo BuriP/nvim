@@ -6,13 +6,14 @@ return {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font }, -- icons support
 	},
-	opts = function()
+	config = function()
 		require("fzf-lua").setup({
 			winopts = {
-				height = 0.80,
-				width = 0.60,
+				split = "belowright new",
+				--height = 0.80,
+				--width = 0.60,
 				border = "rounded",
-				backdrop = 0, -- 0 to 100
+				backdrop = 40, -- 0 to 100
 				preview = {
 					layout = "flex",
 					vertical = "up:45%", -- preview window below results
@@ -21,7 +22,7 @@ return {
 			},
 			-- Additional fzf CLI opts
 			fzf_opts = {
-				["--prompt"] = "❯ ",
+				["--prompt"] = "Query: ❯ ",
 				["--info"] = "inline",
 				["--layout"] = "reverse", -- matches telescope’s default “descending” style
 			},

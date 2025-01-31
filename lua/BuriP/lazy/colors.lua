@@ -27,7 +27,7 @@ return {
 			-- Load the colorscheme here.
 			-- Like many other themes, this one has different styles, and you could load
 			-- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-			vim.cmd.colorscheme("gruvbox-material")
+			vim.cmd.colorscheme("everforest")
 
 			-- You can configure highlights by doing something like:
 			vim.cmd.highlight("Comment gui=none")
