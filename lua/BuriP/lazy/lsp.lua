@@ -19,36 +19,6 @@ return {
 				callback = function(event)
 					local buf = event.buf
 
-					-- Jump to the definition of the word under your cursor
-					vim.keymap.set("n", "gD", function()
-						require("fzf-lua").lsp_definitions()
-					end, { buffer = buf, desc = "LSP: [G]oto [D]efinition" })
-
-					-- Find references for the word under your cursor
-					vim.keymap.set("n", "gr", function()
-						require("fzf-lua").lsp_references()
-					end, { buffer = buf, desc = "LSP: [G]oto [R]eferences" })
-
-					-- Jump to the implementation of the word under your cursor
-					vim.keymap.set("n", "gI", function()
-						require("fzf-lua").lsp_implementations()
-					end, { buffer = buf, desc = "LSP: [G]oto [I]mplementation" })
-
-					-- Jump to the type of the word under your cursor
-					vim.keymap.set("n", "<leader>gtd", function()
-						require("fzf-lua").lsp_typedefs()
-					end, { buffer = buf, desc = "LSP: Type [D]efinition" })
-
-					-- Fuzzy-find all symbols in the current document
-					vim.keymap.set("n", "<leader>ds", function()
-						require("fzf-lua").lsp_document_symbols()
-					end, { buffer = buf, desc = "LSP: [D]ocument [S]ymbols" })
-
-					-- Fuzzy-find all symbols in the current workspace
-					vim.keymap.set("n", "<leader>ws", function()
-						require("fzf-lua").lsp_live_workspace_symbols()
-					end, { buffer = buf, desc = "LSP: [W]orkspace [S]ymbols" })
-
 					-- Rename the variable under your cursor
 					vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = buf, desc = "LSP: [R]e[n]ame" })
 
@@ -60,14 +30,6 @@ return {
 
 					-- Hover documentation
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = buf, desc = "LSP: Hover Documentation" })
-
-					-- Goto Declaration
-					vim.keymap.set(
-						"n",
-						"gd",
-						vim.lsp.buf.declaration,
-						{ buffer = buf, desc = "LSP: [G]oto [D]eclaration" }
-					)
 
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
 					-- vim.notify("Attached LSP: " .. client.name .. "\nConfig:\n" .. vim.inspect(client.config))
