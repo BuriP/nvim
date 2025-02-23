@@ -4,10 +4,59 @@ return {
 		priority = 1000,
 		lazy = false,
 		opts = {
-			animate = { enabled = true },
+			animate = {
+				easing = "outQuad",
+				fps = 60,
+			},
 			bigfile = { enabled = false },
-			dashboard = { enabled = true },
+			dashboard = {
+				-- extra table here
+				sections = {
+					{
+						pane = 1,
+						section = "terminal",
+						cmd = "chafa ~/wallpapers/d6kqmx3db0s41.jpg --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
+						height = 15,
+						padding = 1,
+					},
+					{ section = "keys", gap = 1, padding = 1 },
+					{
+						pane = 2,
+						icon = " ",
+						title = "Recent Files",
+						section = "recent_files",
+						indent = 2,
+						padding = 1,
+						height = 17,
+					},
+					{
+						pane = 2,
+						icon = " ",
+						title = "Projects",
+						section = "projects",
+						indent = 2,
+						padding = 1,
+						height = 17,
+					},
+					{
+						pane = 2,
+						icon = " ",
+						title = "Git Status",
+						section = "terminal",
+						enabled = function()
+							return Snacks.git.get_root() ~= nil
+						end,
+						cmd = "git status --short --branch --renames",
+						height = 17,
+						padding = 1,
+						ttl = 5 * 60,
+						indent = 3,
+					},
+					{ section = "startup" },
+				},
+			},
 			indent = { enabled = true },
+			image = { enabled = true },
 			input = { enabled = true },
 			lazygit = { enabled = true },
 			notifier = { enabled = true },
@@ -15,7 +64,7 @@ return {
 			scroll = {
 				enabled = true,
 				animate = {
-					easing = "linear",
+					easing = "outQuad",
 				},
 			},
 			scope = {
@@ -29,7 +78,7 @@ return {
 			statuscolumn = { enabled = true },
 			terminal = { enabled = true },
 			words = {
-				enabled = true,
+				enabled = false,
 				modes = { "n" },
 			},
 			picker = {
