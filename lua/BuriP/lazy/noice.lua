@@ -36,9 +36,5 @@ return {
 		vim.keymap.set("n", "<leader>nd", function()
 			require("noice").cmd("dismiss")
 		end)
-
-		vim.keymap.set("n", "<leader>nf", function()
-			require("noice").cmd("fzf_lua")
-		end)
 	end,
 }

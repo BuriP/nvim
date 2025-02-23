@@ -3,7 +3,6 @@ return {
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
-		---@type snacks.Config
 		opts = {
 			animate = { enabled = true },
 			bigfile = { enabled = false },
@@ -25,8 +24,6 @@ return {
 					enabled = true,
 					blocks = { enabled = true },
 				},
-				-- Optionally, define a filter if required:
-				-- filter = function(scope) return scope end,
 			},
 			scratch = { enabled = true },
 			statuscolumn = { enabled = true },
@@ -45,9 +42,10 @@ return {
 					frecency = true,
 					history_bonus = true,
 				},
+				layout = "dropdown",
 			},
 		},
-		keys = { -- Terminal Toggle and others
+		keys = {
 			{
 				"<leader>te",
 				function()
@@ -77,7 +75,7 @@ return {
 				desc = "Lazygit",
 			},
 			{
-				"<leader>dno",
+				"<leader>nod",
 				function()
 					Snacks.notifier.hide()
 				end,
@@ -128,7 +126,6 @@ return {
 				desc = "Buffers",
 			},
 			{
-				-- For Neovim config
 				"<leader>fc",
 				function()
 					Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
@@ -179,7 +176,7 @@ return {
 				desc = "Git Log Line",
 			},
 			{
-				"<leader>gt",
+				"<leader>gtu",
 				function()
 					Snacks.picker.git_status()
 				end,
@@ -252,14 +249,7 @@ return {
 				desc = "Buffer Lines",
 			},
 			{
-				"<leader>sch",
-				function()
-					Snacks.picker.command_history()
-				end,
-				desc = "Command History",
-			},
-			{
-				"<leader>sd",
+				"<leader>sdi",
 				function()
 					Snacks.picker.diagnostics()
 				end,
@@ -308,7 +298,7 @@ return {
 				desc = "Keymaps",
 			},
 			{
-				"<leader>sl",
+				"<leader>sll",
 				function()
 					Snacks.picker.loclist()
 				end,
@@ -364,6 +354,15 @@ return {
 				desc = "Colorschemes",
 			},
 			-- LSP
+			{
+				"<leader>sts",
+				function()
+					Snacks.picker.lsp_workspace_symbols({
+						filter = { default = { "Class", "Enum", "Struct", "Trait" } },
+					})
+				end,
+				desc = "Search Type Symbols",
+			},
 			{
 				"gd",
 				function()
