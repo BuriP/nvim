@@ -10,33 +10,14 @@ return {
 			},
 			bigfile = { enabled = false },
 			dashboard = {
-				-- extra table here
 				sections = {
+					{ section = "header" },
 					{
-						pane = 1,
+						pane = 2,
 						section = "terminal",
-						cmd = "chafa ~/wallpapers/d6kqmx3db0s41.jpg --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
-						height = 15,
+						cmd = "chafa ~/wallpapers/girl_black_white.png --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
+						height = 20,
 						padding = 1,
-					},
-					{ section = "keys", gap = 1, padding = 1 },
-					{
-						pane = 2,
-						icon = " ",
-						title = "Recent Files",
-						section = "recent_files",
-						indent = 2,
-						padding = 1,
-						height = 17,
-					},
-					{
-						pane = 2,
-						icon = " ",
-						title = "Projects",
-						section = "projects",
-						indent = 2,
-						padding = 1,
-						height = 17,
 					},
 					{
 						pane = 2,
@@ -47,12 +28,15 @@ return {
 							return Snacks.git.get_root() ~= nil
 						end,
 						cmd = "git status --short --branch --renames",
-						height = 17,
+						height = 5,
 						padding = 1,
 						ttl = 5 * 60,
 						indent = 3,
 					},
-					{ section = "startup" },
+					{
+						{ section = "keys", gap = 1, padding = 1 },
+						{ section = "startup" },
+					},
 				},
 			},
 			indent = { enabled = true },
@@ -64,7 +48,7 @@ return {
 			scroll = {
 				enabled = true,
 				animate = {
-					easing = "outQuad",
+					easing = "linear",
 				},
 			},
 			scope = {
@@ -87,9 +71,13 @@ return {
 					filename_bonus = true,
 					file_pos = true,
 					smartcase = true,
-					ignorecase = true,
+					ignorecase = false,
 					frecency = true,
 					history_bonus = true,
+				},
+				sort = {
+					-- default sort is by score, text length and index
+					fields = { "score:desc", "#text", "idx" },
 				},
 				layout = "dropdown",
 			},
@@ -206,7 +194,9 @@ return {
 			{
 				"<leader>gbr",
 				function()
-					Snacks.picker.git_branches()
+					Snacks.picker.git_branches({
+						all = true,
+					})
 				end,
 				desc = "[G]it [B][R]anches",
 			},
@@ -398,7 +388,15 @@ return {
 			{
 				"<leader>scs",
 				function()
-					Snacks.picker.colorschemes()
+					Snacks.picker.colorschemes({
+						confirm = function(picker, item)
+							picker:close()
+							if item then
+								picker.preview.state.colorscheme = vim.cmd("colorscheme " .. item.text)
+								vim.cmd("colorscheme " .. item.text)
+							end
+						end,
+					})
 				end,
 				desc = "Colorschemes",
 			},

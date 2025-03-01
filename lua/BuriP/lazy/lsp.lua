@@ -64,7 +64,7 @@ return {
 				end,
 			})
 
-			-- Get enhanced LSP capabilities from blink.cmp instead of cmp_nvim_lsp.
+			-- blink added here .
 			local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 			local servers = {
@@ -77,8 +77,10 @@ return {
 								typeCheckingMode = "standard", -- or "off" if you want no type checking
 								autoSearchPaths = true,
 								useLibraryCodeForTypes = true,
+								diadnosticMode = "workspace",
 							},
 						},
+						ruff = {},
 					},
 				},
 				rust_analyzer = {},
@@ -97,7 +99,7 @@ return {
 			require("mason").setup()
 
 			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, { "stylua", "black", "rust_analyzer" })
+			vim.list_extend(ensure_installed, { "stylua", "black", "rust_analyzer", "ruff", "basedpyright" })
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			require("mason-lspconfig").setup({

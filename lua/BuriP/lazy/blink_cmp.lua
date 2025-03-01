@@ -1,10 +1,9 @@
 return {
 	{
 		"saghen/blink.cmp",
-		dependencies = "rafamadriz/friendly-snippets",
+		dependencies = { "rafamadriz/friendly-snippets" },
 
 		version = "*",
-		build = "cargo build --release",
 
 		opts = {
 			keymap = { preset = "default" },
@@ -16,13 +15,73 @@ return {
 				use_nvim_cmp_as_default = false,
 				nerd_font_variant = "mono",
 			},
+			completion = {
+				-- 'prefix' will fuzzy match on the text before the cursor
+				-- 'full' will fuzzy match on the text before _and_ after the cursor
+				keyword = { range = "full" },
+
+				-- NOTE: some LSPs may add auto brackets themselves anyway
+				accept = { auto_brackets = { enabled = true } },
+
+				-- Don't select by default, auto insert on selection
+				list = { selection = { preselect = false, auto_insert = false } },
+				-- or set either per mode via a function
+
+				menu = {
+					-- Don't automatically show the completion menu
+					auto_show = true,
+
+					border = "rounded",
+					-- nvim-cmp style menu
+					draw = {
+
+						treesitter = { "lsp" },
+						columns = {
+							{ "kind_icon", "kind" },
+							{ "label", "label_description", gap = 1 },
+							{ "source_name" },
+						},
+					},
+				},
+
+				-- Show documentation when selecting a completion item
+				documentation = { auto_show = true, auto_show_delay_ms = 500 },
+
+				-- Display a preview of the selected item on the current line
+				ghost_text = {
+					enabled = true,
+					show_without_selection = true,
+					show_with_selection = true,
+					show_with_menu = false,
+				},
+			},
+			fuzzy = {
+				implementation = "prefer_rust_with_warning",
+				use_frecency = true,
+				use_proximity = true,
+				sorts = { "score", "sort_text" },
+			},
 
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
-				default = { "lsp", "path", "snippets" },
+				default = { "lsp", "path", "snippets", "buffer" },
+				per_filetype = {
+					sql = { "dadbod", "snippets", "buffer" },
+					mysql = { "dadbod", "snippets", "buffer" },
+				},
+				providers = {
+					dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+				},
 			},
 			signature = { enabled = true },
+			cmdline = {
+				completion = {
+					menu = {
+						auto_show = true,
+					},
+				},
+			},
 		},
 		opts_extend = { "sources.default" },
 	},
