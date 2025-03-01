@@ -11,11 +11,24 @@ return {
 			bigfile = { enabled = false },
 			dashboard = {
 				sections = {
-					{ section = "header" },
+					{
+						header = [[
+███████████                        ███  ███████████ 
+░░███░░░░░███                      ░░░  ░░███░░░░░███
+ ░███    ░███ █████ ████ ████████  ████  ░███    ░███
+ ░██████████ ░░███ ░███ ░░███░░███░░███  ░██████████ 
+ ░███░░░░░███ ░███ ░███  ░███ ░░░  ░███  ░███░░░░░░  
+ ░███    ░███ ░███ ░███  ░███      ░███  ░███        
+ ███████████  ░░████████ █████     █████ █████       
+░░░░░░░░░░░    ░░░░░░░░ ░░░░░     ░░░░░ ░░░░░        
+                                                     
+                                                     
+						]],
+					},
 					{
 						pane = 2,
 						section = "terminal",
-						cmd = "chafa ~/wallpapers/girl_black_white.png --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
+						cmd = "chafa ~/wallpapers/head_girl.jpeg --format symbols --symbols all ; sleep .1",
 						height = 20,
 						padding = 1,
 					},
