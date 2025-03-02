@@ -9,6 +9,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Did this to have plugins in separate directory
 require("lazy").setup({
-	spec = "BuriP.lazy",
+	spec = {
+		{ import = "BuriP.plugins" },
+	},
 	change_detection = { notify = true },
 })
