@@ -28,7 +28,7 @@ return {
 					{
 						pane = 2,
 						section = "terminal",
-						cmd = "chafa ~/wallpapers/head_girl.jpeg --format symbols --symbols all ; sleep .1",
+						cmd = "chafa ~/wallpapers/japan_cat_spring.jpeg --format symbols --symbols all ; sleep .1",
 						height = 20,
 						padding = 1,
 					},
@@ -169,14 +169,14 @@ return {
 			},
 			-- find
 			{
-				"<leader>fb",
+				"<leader>sbu",
 				function()
 					Snacks.picker.buffers()
 				end,
 				desc = "Buffers",
 			},
 			{
-				"<leader>fc",
+				"<leader>sn",
 				function()
 					Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
 				end,
@@ -308,7 +308,7 @@ return {
 				desc = "Diagnostics",
 			},
 			{
-				"<leader>sD",
+				"<leader>sDb",
 				function()
 					Snacks.picker.diagnostics_buffer()
 				end,
@@ -357,14 +357,14 @@ return {
 				desc = "Location List",
 			},
 			{
-				"<leader>sm",
+				"<leader>sM",
 				function()
 					Snacks.picker.marks()
 				end,
 				desc = "Marks",
 			},
 			{
-				"<leader>sM",
+				"<leader>sm",
 				function()
 					Snacks.picker.man()
 				end,
@@ -396,7 +396,7 @@ return {
 				function()
 					Snacks.picker.undo()
 				end,
-				desc = "Undo History",
+				desc = " Search Undo History",
 			},
 			{
 				"<leader>scs",
@@ -411,7 +411,7 @@ return {
 						end,
 					})
 				end,
-				desc = "Colorschemes",
+				desc = "Search Colorschemes",
 			},
 			-- LSP
 			{
