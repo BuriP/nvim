@@ -75,12 +75,20 @@ return {
 						basedpyright = {
 							analysis = {
 								typeCheckingMode = "standard", -- or "off" if you want no type checking
+								logLevel = "Information",
 								autoSearchPaths = true,
 								useLibraryCodeForTypes = true,
-								diadnosticMode = "workspace",
+								stubPath = vim.fs.joinpath(vim.fn.stdpath("data") .. "lazy", "python-type-stubs"),
 							},
 						},
-						ruff = {},
+					},
+				},
+				ruff = {
+					init_options = {
+						settings = {
+							lineLength = 120,
+							logLevel = "debug",
+						},
 					},
 				},
 				rust_analyzer = {},

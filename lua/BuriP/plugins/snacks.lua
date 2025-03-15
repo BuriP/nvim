@@ -5,10 +5,10 @@ return {
 		lazy = false,
 		opts = {
 			animate = {
-				easing = "outQuad",
+				easing = "linear",
 				fps = 60,
 			},
-			bigfile = { enabled = false },
+			bigfile = { enabled = true },
 			dashboard = {
 				sections = {
 					{
@@ -28,7 +28,7 @@ return {
 					{
 						pane = 2,
 						section = "terminal",
-						cmd = "chafa ~/wallpapers/japan_cat_spring.jpeg --format symbols --symbols all ; sleep .1",
+						cmd = "chafa ~/wallpapers/bar_coffee.jpeg --format symbols --symbols all ; sleep .1",
 						height = 20,
 						padding = 1,
 					},
@@ -96,6 +96,13 @@ return {
 			},
 		},
 		keys = {
+			{
+				"<leader>ssu",
+				function()
+					Snacks.picker.spelling()
+				end,
+				desc = "Search Spelling Suggestions",
+			},
 			{
 				"<leader>te",
 				function()
