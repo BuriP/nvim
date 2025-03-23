@@ -55,4 +55,19 @@ return {
 			})
 		end,
 	},
+	{
+		"RRethy/nvim-treesitter-textsubjects",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		config = function()
+			require("nvim-treesitter-textsubjects").configure({
+
+				prev_selection = ",",
+				keysmaps = {
+					["<leader>to"] = "textsubjects-smart",
+					["<leader>too"] = "textsubjects-container-outer",
+					["i;"] = "textsubjects-container-inner",
+				},
+			})
+		end,
+	},
 }

@@ -1,4 +1,7 @@
 return {
-	"microsoft/python-type-stubs",
-	lazy = false, -- Always load
+	{ "sbdchd/django-types", lazy = false }, -- Always load },
+	{
+		"microsoft/python-type-stubs",
+		lazy = false, -- Always load
+	},
 }

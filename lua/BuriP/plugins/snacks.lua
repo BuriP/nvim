@@ -75,22 +75,22 @@ return {
 			statuscolumn = { enabled = true },
 			terminal = { enabled = true },
 			words = {
-				enabled = false,
+				enabled = true,
 				modes = { "n" },
 			},
 			picker = {
 				matcher = {
 					fuzzy = true,
-					filename_bonus = true,
-					file_pos = true,
+					filename_bonus = false,
+					file_pos = false,
 					smartcase = true,
-					ignorecase = false,
+					ignorecase = true,
 					frecency = true,
-					history_bonus = true,
+					history_bonus = false,
 				},
 				sort = {
 					-- default sort is by score, text length and index
-					fields = { "score:desc", "#text", "idx" },
+					fields = { "#text", "score:desc", "idx" },
 				},
 				layout = "dropdown",
 			},
@@ -421,10 +421,20 @@ return {
 				desc = "Search Colorschemes",
 			},
 			-- LSP
+
 			{
 				"<leader>sts",
 				function()
 					Snacks.picker.lsp_workspace_symbols({
+						workspace = true,
+						live = true,
+						tree = true,
+						debug = {
+							scores = true,
+							leaks = true,
+							grep = true,
+						},
+						supports_live = true,
 						filter = { default = { "Class", "Enum", "Struct", "Trait" } },
 					})
 				end,
