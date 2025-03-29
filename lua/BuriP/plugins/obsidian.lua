@@ -19,7 +19,7 @@ return {
 			workspaces = {
 				{
 					name = "personal",
-					path = "~/obsidian/personal",
+					path = vim.fn.expand("~/obsidian/personal"),
 					overrides = {
 						daily_notes = {
 							folder = "Daily",
@@ -29,7 +29,7 @@ return {
 				},
 				{
 					name = "work",
-					path = "~/obsidian/work",
+					path = vim.fn.expand("~/obsidian/work"),
 					overrides = {
 						daily_notes = {
 							folder = "Daily",

@@ -80,7 +80,7 @@ return {
 			},
 			picker = {
 				matcher = {
-					fuzzy = true,
+					fuzzy = false,
 					filename_bonus = false,
 					file_pos = false,
 					smartcase = true,
@@ -90,7 +90,7 @@ return {
 				},
 				sort = {
 					-- default sort is by score, text length and index
-					fields = { "#text", "score:desc", "idx" },
+					fields = { "exact", "#text", "score:desc", "idx" },
 				},
 				layout = "dropdown",
 			},
@@ -140,11 +140,18 @@ return {
 			},
 			-- Top Pickers & Explorer
 			{
-				"<leader>sf",
+				"<leader>ssm",
 				function()
 					Snacks.picker.smart()
 				end,
 				desc = "[S]earch [F]iles Smart",
+			},
+			{
+				"<leader>sf",
+				function()
+					Snacks.picker.files()
+				end,
+				desc = "[S]earch [F]iles",
 			},
 			{
 				"<leader><leader>",

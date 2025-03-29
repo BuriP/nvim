@@ -1,12 +1,13 @@
 return {
 	{
 		"saghen/blink.cmp",
-		dependencies = { "rafamadriz/friendly-snippets" },
+		dependencies = { "rafamadriz/friendly-snippets", "L3MON4D3/LuaSnip" },
 
 		version = "*",
 
 		opts = {
 			keymap = { preset = "default" },
+			snippets = { preset = "luasnip" },
 
 			appearance = {
 				-- Sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -18,7 +19,7 @@ return {
 			completion = {
 				-- 'prefix' will fuzzy match on the text before the cursor
 				-- 'full' will fuzzy match on the text before _and_ after the cursor
-				keyword = { range = "full" },
+				keyword = { range = "prefix" },
 
 				-- NOTE: some LSPs may add auto brackets themselves anyway
 				accept = { auto_brackets = { enabled = true } },
@@ -41,6 +42,26 @@ return {
 							{ "label", "label_description", gap = 1 },
 							{ "source_name" },
 						},
+						components = {
+							kind_icon = {
+								text = function(ctx)
+									local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
+									return kind_icon
+								end,
+								-- (optional) use highlights from mini.icons
+								highlight = function(ctx)
+									local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+									return hl
+								end,
+							},
+							kind = {
+								-- (optional) use highlights from mini.icons
+								highlight = function(ctx)
+									local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+									return hl
+								end,
+							},
+						},
 					},
 				},
 
@@ -59,7 +80,7 @@ return {
 				implementation = "prefer_rust_with_warning",
 				use_frecency = true,
 				use_proximity = true,
-				sorts = { "score", "sort_text" },
+				sorts = { "exact", "score", "sort_text" },
 			},
 
 			-- Default list of enabled providers defined so that you can extend it
@@ -72,6 +93,14 @@ return {
 				},
 				providers = {
 					dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+					-- completions to be relative to your current working directory rather than the default
+					path = {
+						opts = {
+							get_cwd = function(_)
+								return vim.fn.getcwd()
+							end,
+						},
+					},
 				},
 			},
 			signature = { enabled = true },

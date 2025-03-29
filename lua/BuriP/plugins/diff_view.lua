@@ -8,7 +8,7 @@ return {
 			default_args = {
 				-- Whenever you run `:DiffviewOpen` with no arguments, it will do:
 				-- `:DiffviewOpen master..HEAD`
-				DiffviewOpen = { "master..HEAD" },
+				DiffviewOpen = { "master...HEAD" },
 			},
 
 			-- Example hook (not mandatory). Valid hooks include: diff_buf_read, diff_buf_win_enter, view_opened, etc.

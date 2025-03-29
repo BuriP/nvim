@@ -12,6 +12,7 @@ return {
 			-- used for completion, annotations and signatures of Neovim apis
 			{ "folke/neodev.nvim", opts = {} },
 			{ "saghen/blink.cmp", opts = {} },
+			{ "folke/lazydev.nvim" },
 		},
 		config = function()
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -75,6 +76,21 @@ return {
 						basedpyright = {
 							analysis = {
 								typeCheckingMode = "standard", -- or "off" if you want no type checking
+								reportNoOverloadImplementation = "hint",
+								reportOptionalIterable = "hint",
+								reportOptionalCall = "hint",
+								reportDeprecated = "warning",
+								reportUnknownParameterType = "warning",
+								reportUnknownArgumentType = "warning",
+								reportMissingTypeArgument = "warning",
+								reportmissingParameterType = "warning",
+								reportAssertAlwaysTrue = "warning",
+								reportIncompleteStub = "hint",
+								reportAny = "warning",
+								reportUnsafeMultipleInheritance = "warning",
+								reportUnusedParameter = "hint",
+								deprecateTypingAliases = "hint",
+								reportMissingTypeStubs = "hint",
 								logLevel = "Information",
 								autoSearchPaths = true,
 								useLibraryCodeForTypes = true,
@@ -83,14 +99,14 @@ return {
 						},
 					},
 				},
-				ruff = {
-					init_options = {
-						settings = {
-							lineLength = 120,
-							logLevel = "debug",
-						},
-					},
-				},
+				--ruff = {
+				--init_options = {
+				--	settings = {
+				--		lineLength = 120,
+				--		logLevel = "debug",
+				--	},
+				--},
+				--},
 				rust_analyzer = {},
 				lua_ls = {
 					settings = {
@@ -107,7 +123,7 @@ return {
 			require("mason").setup()
 
 			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, { "stylua", "black", "rust_analyzer", "ruff", "basedpyright" })
+			vim.list_extend(ensure_installed, { "stylua", "black", "rust_analyzer", "basedpyright" })
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 			require("mason-lspconfig").setup({
