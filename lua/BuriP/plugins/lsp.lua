@@ -28,6 +28,15 @@ return {
 						buffer = buf,
 						desc = "LSP: [C]ode [A]ction",
 					})
+					vim.diagnostic.config({
+
+						-- Alternatively, customize specific options
+						virtual_text = true,
+						--virtual_lines = {
+						--	-- Only show virtual line diagnostics for the current cursor line
+						--	current_line = true,
+						--},
+					})
 
 					-- Hover documentation
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = buf, desc = "LSP: Hover Documentation" })

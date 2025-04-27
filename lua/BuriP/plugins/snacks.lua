@@ -28,7 +28,7 @@ return {
 					{
 						pane = 2,
 						section = "terminal",
-						cmd = "chafa ~/wallpapers/bar_coffee.jpeg --format symbols --symbols all ; sleep .1",
+						cmd = "chafa ~/wallpapers/cliff_castle.png --format symbols --symbols all ; sleep .1",
 						height = 20,
 						padding = 1,
 					},
@@ -73,14 +73,21 @@ return {
 			},
 			scratch = { enabled = true },
 			statuscolumn = { enabled = true },
-			terminal = { enabled = true },
+			terminal = {
+				enabled = true,
+				win = {
+					position = "right",
+					style = "terminal",
+					size = { width = 0.3 },
+				},
+			},
 			words = {
 				enabled = true,
 				modes = { "n" },
 			},
 			picker = {
 				matcher = {
-					fuzzy = false,
+					fuzzy = true,
 					filename_bonus = false,
 					file_pos = false,
 					smartcase = true,
