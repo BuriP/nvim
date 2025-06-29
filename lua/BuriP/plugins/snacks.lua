@@ -75,12 +75,16 @@ return {
 			statuscolumn = { enabled = true },
 			terminal = {
 				enabled = true,
+				keys = {
+					q = "hide",
+				},
 				win = {
 					position = "right",
 					style = "terminal",
-					size = { width = 0.3 },
+					size = { width = 0.10 },
 				},
 			},
+			toggle = { enabled = true },
 			words = {
 				enabled = true,
 				modes = { "n" },

@@ -22,18 +22,18 @@ return {
 					runner = "pytest", -- falls back automatically
 					args = { "--log-level", "DEBUG" },
 					-- python = ".venv/bin/python",
-				}), -- :contentReference[oaicite:0]{index=0}
+				}),
 
 				require("neotest-go")({
 					recursive_run = true, -- run ./... when root dir given
 					args = { "-count=1" }, -- disable caching for CI-like runs
 					-- experimental = { test_table = true },
-				}), -- :contentReference[oaicite:1]{index=1}
+				}),
 
 				require("neotest-rust")({
 					args = { "--no-capture" }, -- print stdout as tests run
 					-- dap_adapter = "lldb",            -- or "codelldb" (default)
-				}), -- :contentReference[oaicite:2]{index=2}
+				}),
 			},
 		})
 
@@ -58,7 +58,7 @@ return {
 			vim.tbl_extend("force", opts, { desc = "NeoTest: Toggle Summary" })
 		)
 
-		-- Open the rich output window for the last run
+		-- Open previous output
 		map(
 			"n",
 			"<leader>to",

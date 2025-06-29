@@ -20,7 +20,7 @@ return {
 		"folke/tokyonight.nvim",
 		priority = 1000, -- Make sure to load this before all the other start plugins.
 		init = function()
-			vim.cmd.colorscheme("dracula")
+			vim.cmd.colorscheme("kanagawa-dragon")
 		end,
 	},
 	{ "Yazeed1s/oh-lucy.nvim", name = "oh-lucy", priority = 1000 },
