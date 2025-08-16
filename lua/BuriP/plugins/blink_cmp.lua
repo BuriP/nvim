@@ -4,7 +4,8 @@ return {
 		dependencies = { "rafamadriz/friendly-snippets", "L3MON4D3/LuaSnip" },
 
 		version = "*",
-
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
 		opts = {
 			keymap = { preset = "default" },
 			snippets = { preset = "luasnip" },
@@ -85,10 +86,10 @@ return {
 				},
 			},
 			fuzzy = {
-				implementation = "prefer_rust_with_warning",
+				implementation = "prefer_rust",
 				use_frecency = true,
 				use_proximity = true,
-				sorts = { "exact", "score", "sort_text" },
+				sorts = { "score", "sort_text", "label", "kind" },
 			},
 
 			-- Default list of enabled providers defined so that you can extend it
@@ -118,6 +119,13 @@ return {
 						auto_show = true,
 					},
 				},
+			},
+			terminal = {
+				enabled = true,
+				keymap = { preset = "inherit" }, -- Inherits from top level `keymap` config when not set
+				menu = { auto_show = true },
+				-- Displays a preview of the selected item on the current line
+				ghost_text = { enabled = true },
 			},
 		},
 		opts_extend = { "sources.default" },

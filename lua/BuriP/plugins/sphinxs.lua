@@ -11,7 +11,7 @@ return {
 	dependencies = {
 		-- completion for :ref:, :doc:, etc.
 		-- you only need one completion engine; pick yours ↓
-		"hrsh7th/nvim-cmp", -- for nvim-cmp sources
+		"saghen/blink.cmp",
 
 		-- fuzzy–finder helpers
 		"junegunn/fzf",
@@ -29,7 +29,7 @@ return {
 		-- vim.g.sphinx_always_use_scoped_targets = 1     -- always prefix role target
 
 		-- Keymaps for the fzf/telescope helpers (example)
-		vim.keymap.set("n", "<leader>pf", ":SphinxFiles<CR>", { desc = "Sphinx files" })
-		vim.keymap.set("n", "<leader>pr", ":SphinxRefs<CR>", { desc = "Sphinx refs" })
+		vim.keymap.set("n", "<leader>spf", ":SphinxFiles<CR>", { desc = "Sphinx files" })
+		vim.keymap.set("n", "<leader>spr", ":SphinxRefs<CR>", { desc = "Sphinx refs" })
 	end,
 }
