@@ -19,7 +19,7 @@ return {
 			completion = {
 				-- 'prefix' will fuzzy match on the text before the cursor
 				-- 'full' will fuzzy match on the text before _and_ after the cursor
-				keyword = { range = "prefix" },
+				keyword = { range = "full" },
 
 				-- NOTE: some LSPs may add auto brackets themselves anyway
 				accept = { auto_brackets = { enabled = true } },
@@ -39,10 +39,18 @@ return {
 						treesitter = { "lsp" },
 						columns = {
 							{ "kind_icon", "kind" },
-							{ "label", "label_description", gap = 1 },
+							{ "label", gap = 1 },
 							{ "source_name" },
 						},
 						components = {
+							label = {
+								text = function(ctx)
+									return require("colorful-menu").blink_components_text(ctx)
+								end,
+								highlight = function(ctx)
+									return require("colorful-menu").blink_components_highlight(ctx)
+								end,
+							},
 							kind_icon = {
 								text = function(ctx)
 									local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)

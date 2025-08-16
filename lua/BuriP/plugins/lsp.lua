@@ -88,7 +88,6 @@ return {
 				basedpyright = {
 					root_markers = {
 						".git",
-						"pyproject.toml",
 						"setup.py",
 						"setup.cfg",
 						"Pipfile",

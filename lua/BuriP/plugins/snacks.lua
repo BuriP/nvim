@@ -1,6 +1,7 @@
 return {
 	{
 		"folke/snacks.nvim",
+		---@type snacks.Config
 		priority = 1000,
 		lazy = false,
 		opts = {
@@ -79,9 +80,9 @@ return {
 					q = "hide",
 				},
 				win = {
-					position = "right",
+					position = "bottom",
 					style = "terminal",
-					size = { width = 0.10 },
+					size = { width = 0.05 },
 				},
 			},
 			toggle = { enabled = true },
@@ -449,7 +450,6 @@ return {
 						tree = true,
 						debug = {
 							scores = true,
-							leaks = true,
 							grep = true,
 						},
 						supports_live = true,
