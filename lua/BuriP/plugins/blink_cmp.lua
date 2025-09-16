@@ -86,8 +86,10 @@ return {
 				},
 			},
 			fuzzy = {
-				implementation = "prefer_rust",
-				frenency = true,
+				implementation = "rust",
+				frecency = {
+					enabled = true,
+				},
 				use_proximity = true,
 				sorts = { "score", "sort_text", "label", "kind" },
 			},
@@ -120,12 +122,14 @@ return {
 					},
 				},
 			},
-			terminal = {
+			term = {
 				enabled = true,
 				keymap = { preset = "inherit" }, -- Inherits from top level `keymap` config when not set
-				menu = { auto_show = true },
-				-- Displays a preview of the selected item on the current line
-				ghost_text = { enabled = true },
+				completion = {
+					menu = { auto_show = true },
+					-- Displays a preview of the selected item on the current line
+					ghost_text = { enabled = true },
+				},
 			},
 		},
 		opts_extend = { "sources.default" },
