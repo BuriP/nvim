@@ -1,11 +1,13 @@
 return {
 	{
 		"folke/snacks.nvim",
+		enabled = true,
 		---@type snacks.Config
 		priority = 1000,
 		lazy = false,
 		opts = {
 			animate = {
+				enabled = true,
 				easing = "linear",
 				fps = 60,
 			},
@@ -91,6 +93,7 @@ return {
 				modes = { "n" },
 			},
 			picker = {
+				enabled = false,
 				matcher = {
 					fuzzy = true,
 					filename_bonus = false,
@@ -108,13 +111,13 @@ return {
 			},
 		},
 		keys = {
-			{
-				"<leader>ssu",
-				function()
-					Snacks.picker.spelling()
-				end,
-				desc = "Search Spelling Suggestions",
-			},
+			--{
+			--	"<leader>ssu",
+			--	function()
+			--		Snacks.picker.spelling()
+			--	end,
+			--	desc = "Search Spelling Suggestions",
+			--},
 			{
 				"<leader>te",
 				function()

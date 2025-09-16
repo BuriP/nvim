@@ -1,24 +1,16 @@
 return {
-	-- Highlight todo, notes, etc in comments
 	{
 		"folke/todo-comments.nvim",
 		event = "VimEnter",
-		dependencies = { "nvim-lua/plenary.nvim", "folke/snacks.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim", "ibhagwan/fzf-lua" },
 		opts = { signs = false },
+		cmd = { "TodoFzfLua" },
 		keys = {
-			{
-				"<leader>std",
-				function()
-					Snacks.picker.todo_comments()
-				end,
-				desc = "Todo",
-			},
+			{ "<leader>std", "<cmd>TodoFzfLua<cr>", desc = "Todo (fzf-lua)" },
 			{
 				"<leader>sTd",
-				function()
-					Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME", "WARN", "WARNING" } })
-				end,
-				desc = "Todo/Fix/Fixme",
+				"<cmd>TodoFzfLua keywords=TODO,FIX,FIXME,WARN,WARNING<cr>",
+				desc = "Todo/Fix/Fixme (fzf-lua)",
 			},
 		},
 	},
