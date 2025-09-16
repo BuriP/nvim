@@ -87,7 +87,7 @@ return {
 			},
 			fuzzy = {
 				implementation = "prefer_rust",
-				use_frecency = true,
+				frenency = true,
 				use_proximity = true,
 				sorts = { "score", "sort_text", "label", "kind" },
 			},
