@@ -37,7 +37,13 @@ return {
 
 		--GENERAL SEARCH--
 		vim.keymap.set("n", "<leader>sg", function()
-			fzf.live_grep()
+			fzf.live_grep({
+				fzf_opts = {
+					["--tiebreak"] = "begin,length", -- prefix/exact first; shorter wins tie
+					-- ["--nth"]   = "1",             -- uncomment if you want matching to favor the symbol name
+					-- ["--case"]  = "smart",
+				},
+			})
 		end, { desc = "[S]earch by [G]rep (fzf-lua)" })
 
 		vim.keymap.set("n", "<leader>sdw", function()
@@ -65,8 +71,31 @@ return {
 
 		--LSP SEARCH--
 		vim.keymap.set("n", "<leader>sws", function()
-			fzf.lsp_live_workspace_symbols()
+			fzf.lsp_live_workspace_symbols({
+				async_or_timeout = true,
+			})
 		end, { desc = "[S]earch [W]orkspace symbols (fzf-lua)" })
+
+		local TYPES = { Class = true, Interface = true, Struct = true, Enum = true, TypeParameter = true }
+
+		vim.keymap.set("n", "<leader>st", function()
+			require("fzf-lua").lsp_live_workspace_symbols({
+				prompt = "Types ❯ ",
+
+				-- keep only type-like symbols
+				regex_filter = function(item)
+					return TYPES[item.kind]
+				end,
+
+				-- exact first, then everything else ordered by SHORTER length
+				-- transform "Event" -> "^Event$|Event" (exact OR general)
+				fzf_opts = {
+					["--bind"] = "change:transform-query:printf '^%%s$|%%s' {q} {q}",
+					["--tiebreak"] = "length,index", -- shorter first; keep stable order after
+					["--nth"] = "2..", -- match on the symbol name column only
+				},
+			})
+		end, { desc = "[S]earch [T]ypes (workspace)" })
 
 		vim.keymap.set("n", "<leader>ca", function()
 			fzf.lsp_code_actions()
@@ -75,14 +104,6 @@ return {
 		vim.keymap.set("n", "<leader>stag", function()
 			fzf.tags_live_grep()
 		end, { desc = "[S]earch [T]ags" })
-
-		vim.keymap.set("n", "<leader>ca", function()
-			fzf.lsp_live_workspace_symbols()
-		end, { desc = "[C]ode [A]ctions" })
-
-		vim.keymap.set("n", "<leader>st", function()
-			fzf.typedefs()
-		end, { desc = "[S]earch [T]ypes" })
 
 		vim.keymap.set("n", "gr", function()
 			fzf.lsp_references()
