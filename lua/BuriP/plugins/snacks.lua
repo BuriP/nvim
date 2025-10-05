@@ -82,7 +82,7 @@ return {
 					q = "hide",
 				},
 				win = {
-					position = "bottom",
+					position = "right",
 					style = "terminal",
 					size = { width = 0.05 },
 				},
