@@ -31,7 +31,7 @@ return {
 					{
 						pane = 2,
 						section = "terminal",
-						cmd = "chafa ~/wallpapers/cliff_castle.png --format symbols --symbols all ; sleep .1",
+						cmd = "chafa ~/wallpapers/.png --format symbols --symbols all ; sleep .1",
 						height = 20,
 						padding = 1,
 					},
