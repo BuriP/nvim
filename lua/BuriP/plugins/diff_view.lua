@@ -1,5 +1,14 @@
 return {
 	"sindrets/diffview.nvim",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	keys = {
+		{
+			"<leader>dvo",
+			"<cmd>DiffviewOpen<cr>",
+			desc = "DiffviewOpen",
+		},
+		{ "<leader>dvc", "<cmd>DiffviewClose<cr>", desc = "DiffviewClose" },
+	},
 	config = function()
 		require("diffview").setup({
 			use_icons = true,
